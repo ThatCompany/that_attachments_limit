@@ -6,7 +6,7 @@ This is a well-known limitation (see [#18556](https://www.redmine.org/issues/185
 That Attachments Limit plugin makes this limit configurable
 (**Administration** - **Plugins** - That Attachments Limit - **Configure**):
 
-![Plugin settings](settings.png)
+<img src="https://github.com/ThatCompany/that_attachments_limit/raw/master/settings.png" width="600" height="115" alt="Plugin settings">
 
 ## Installation
 
