@@ -7,7 +7,7 @@ function addFile(inputEl, file, eagerUpload) {
         var attachmentId = addFile.nextAttachmentId++;
         var fileSpan = $('<span>', { id: 'attachments_' + attachmentId });
         var param = $(inputEl).data('param');
-        if (!param) { param = 'attachments'; }
+        if (!param) { param = 'attachments'};
 
         fileSpan.append(
             $('<input>', { type: 'text', 'class': 'icon icon-attachment filename readonly', name: param +'[' + attachmentId + '][filename]', readonly: 'readonly' }).val(file.name),
@@ -31,3 +31,25 @@ function addFile(inputEl, file, eagerUpload) {
 }
 
 addFile.nextAttachmentId = 1;
+
+function uploadAndAttachFiles(files, inputEl) {
+
+    var maxFileSize = $(inputEl).data('max-file-size');
+    var maxFileSizeExceeded = $(inputEl).data('max-file-size-message');
+
+    var sizeExceeded = false;
+    var filesLength = $(inputEl).closest('.attachments_form').find('.attachments_fields').children().length + files.length
+    $.each(files, function() {
+        if (this.size && maxFileSize != null && this.size > parseInt(maxFileSize)) {sizeExceeded=true;}
+    });
+    if (sizeExceeded) {
+        window.alert(maxFileSizeExceeded);
+    } else {
+        $.each(files, function() {addFile(inputEl, this, true);});
+    }
+
+    if (filesLength > ($(inputEl).attr('multiple') == 'multiple' ? window.maxFileUploads : 1)) {
+        window.alert($(inputEl).data('max-number-of-files-message'));
+    }
+    return sizeExceeded;
+}
