@@ -8,7 +8,8 @@ Redmine::Plugin.register :that_attachments_limit do
     author_url 'http://www.andriylesyuk.com/'
     description 'Allows to configure how many attachments can be uploaded at once.'
     url 'https://github.com/thatcompany/that_attachments_limit'
-    version '0.0.1'
+    version '0.0.2'
 
     settings :default => { 'attachments_limit' => 10 }, :partial => 'settings/attachments_limit'
 end
+
