@@ -6,7 +6,7 @@
 <% locals[:saved_attachments] = saved_attachments if defined?(saved_attachments) %>
 <% locals[:filedrop] = filedrop if defined?(filedrop) %>
 
-<%= render :file => File.join(Rails.root, 'app/views/attachments/_form.html.erb'), :locals => locals %>
+<%= render :parent, {:locals => locals} %>
 
 <% content_for :header_tags do %>
   <% maxFileUploads = Setting.plugin_that_attachments_limit['attachments_limit'].to_i %>
